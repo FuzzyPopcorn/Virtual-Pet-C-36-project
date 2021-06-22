@@ -74,6 +74,7 @@ function feedDog(){
 dog.addImage(happyDog);
 
   //write code here to update food stock and last fed time
+  
   var food_stock_val = foodObj.getFoodStock();
   if(food_stock_val <+ 0){
     foodObj.updateFoodStock(food_stock_val *0);
@@ -81,7 +82,9 @@ dog.addImage(happyDog);
   else{
     foodObj.updateFoodStock(food_stock_val -1);
   }
+
   database.ref('/').update({
+    Food: foodObj.getFoodStock(),
     FeedTime:hour()
   })
 }
